@@ -57,7 +57,7 @@ def score_word(word)
   points = 0
 
   word.chars.each do |letter|
-  
+
   case letter.upcase
     when "A", "E", "I", "O", "U", "L", "N", "R", "S", "T"
       points += 1
@@ -81,4 +81,28 @@ def score_word(word)
   end
 
 return points
+end
+
+
+def highest_score_from(words)
+  highest_points_word = nil
+  score = 0
+
+  words.each do |word|
+    if score_word(word) > score
+      highest_points_word = word
+      score = score_word(word)
+
+    elsif score_word(word) == score
+        if word.length == 10 && word.length != highest_points_word.length
+           highest_points_word = word
+        elsif word.length < highest_points_word.length && highest_points_word.length != 10 
+          highest_points_word = word
+        end
+    end
+  end
+
+  winning_word = {word: highest_points_word, score: score}
+  return winning_word
+
 end
