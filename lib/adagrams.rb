@@ -1,3 +1,5 @@
+require "pry"
+
 def draw_letters
 letter_pool = %w(
   A A A A A A A A A
@@ -35,19 +37,19 @@ end
 
 
 def uses_available_letters?(input, letters_in_hand)
-  word_match = false
   letter_match = 0
+  temp_letters_in_hand = letters_in_hand.dup
 
   input.chars.each do |letter|
-    if letters_in_hand.include?(letter.upcase)
-      letters_in_hand.delete(letter.upcase)
+    if temp_letters_in_hand.include?(letter.upcase)
+      temp_letters_in_hand.delete_at(temp_letters_in_hand.index(letter.upcase))
       letter_match += 1
     end
   end
 
   if letter_match == input.length
-    word_match = true
+    return true
+  else
+    return false
   end
-
-return word_match
 end
