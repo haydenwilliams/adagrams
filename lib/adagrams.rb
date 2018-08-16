@@ -1,3 +1,7 @@
+require 'csv'
+require 'pry'
+# require_relative '../assets/dictionary-english.csv'
+
 def draw_letters
 letter_pool = %w(
   A A A A A A A A A
@@ -58,6 +62,8 @@ def score_word(word)
 
   word.chars.each do |letter|
 
+###################### Data structure ?
+
   case letter.upcase
     when "A", "E", "I", "O", "U", "L", "N", "R", "S", "T"
       points += 1
@@ -96,7 +102,7 @@ def highest_score_from(words)
     elsif score_word(word) == score
         if word.length == 10 && word.length != highest_points_word.length
            highest_points_word = word
-        elsif word.length < highest_points_word.length && highest_points_word.length != 10 
+        elsif word.length < highest_points_word.length && highest_points_word.length != 10
           highest_points_word = word
         end
     end
@@ -105,4 +111,18 @@ def highest_score_from(words)
   winning_word = {word: highest_points_word, score: score}
   return winning_word
 
+end
+
+
+def is_in_english_dict?(input)
+  dictionary = CSV.open("assets/dictionary-english.csv")
+  verify = false
+  
+  dictionary.each do |word|
+    if word.include?(input)
+      verify = true
+    end
+  end
+
+  return verify
 end
