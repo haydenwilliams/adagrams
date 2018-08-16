@@ -168,4 +168,18 @@ describe 'Adagrams' do
       expect(best_word[:score]).must_equal 18
     end
   end
+
+  describe 'is_in_english_dict? method' do
+    it 'verifies that valid input matches an entry in the dictionary CSV file' do
+      input = "codeine"
+
+      expect(is_in_english_dict?(input)).must_equal true
+    end
+
+    it 'verifies that invalid word input returns false' do
+      input = "poopydiscoopscoopdiddywhoopwhoopdiscoopdipoop"
+
+      expect(is_in_english_dict?(input)).must_equal false
+    end
+  end
 end
