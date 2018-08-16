@@ -1,5 +1,6 @@
+
 require 'csv'
-require 'pry'
+
 # require_relative '../assets/dictionary-english.csv'
 
 def draw_letters
@@ -115,9 +116,9 @@ end
 
 
 def is_in_english_dict?(input)
-  dictionary = CSV.open("assets/dictionary-english.csv")
+  dictionary = CSV.read("assets/dictionary-english.csv")
   verify = false
-  
+
   dictionary.each do |word|
     if word.include?(input)
       verify = true
