@@ -59,7 +59,7 @@ end
 
 
 def score_word(word)
-  points = 0
+  word_score = 0
   letter_score = {
     1 => ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
     2 => ["D", "G"],
@@ -71,19 +71,19 @@ def score_word(word)
   }
 
   word.chars.each do |letter|
-    letter_score.each do |key, value|
-      if value.include?(letter.upcase)
-        points += key
+    letter_score.each do |point_value, letters|
+      if letters.include?(letter.upcase)
+        word_score += point_value
       end
     end
   end
 
 
   if word.length > 6
-    points += 8
+    word_score += 8
   end
 
-return points
+return word_score
 end
 
 
