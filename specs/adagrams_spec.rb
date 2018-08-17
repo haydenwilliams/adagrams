@@ -181,5 +181,17 @@ describe 'Adagrams' do
 
       expect(is_in_english_dict?(input)).must_equal false
     end
+
+    it 'verifies that first entry in the dictionary CSV file is read properly' do
+      input = "Word"
+
+      expect(is_in_english_dict?(input)).must_equal true
+    end
+
+    it 'verifies that first entry in the dictionary CSV file is read properly' do
+      input = "zwitterion"
+
+      expect(is_in_english_dict?(input)).must_equal true
+    end
   end
 end
