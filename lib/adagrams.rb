@@ -60,28 +60,24 @@ end
 
 def score_word(word)
   points = 0
+  letter_score = {
+    1 => ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
+    2 => ["D", "G"],
+    3 => ["B", "C", "M", "P"],
+    4 => ["F", "H", "V", "W", "Y"],
+    5 => ["K"],
+    8 => ["J", "X"],
+    10 => ["Q", "Z"]
+  }
 
   word.chars.each do |letter|
-
-###################### Data structure ?
-
-  case letter.upcase
-    when "A", "E", "I", "O", "U", "L", "N", "R", "S", "T"
-      points += 1
-    when "D", "G"
-      points += 2
-    when "B", "C", "M", "P"
-      points += 3
-    when "F", "H", "V", "W", "Y"
-      points += 4
-    when "K"
-      points += 5
-    when "J", "X"
-      points += 8
-    when "Q", "Z"
-      points += 10
+    letter_score.each do |key, value|
+      if value.include?(letter.upcase)
+        points += key
+      end
     end
   end
+
 
   if word.length > 6
     points += 8
