@@ -79,7 +79,7 @@ def score_word(word)
   end
 
 
-  if word.length > 6
+  if word.length >= 7
     word_score += 8
   end
 
